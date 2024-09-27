@@ -1,3 +1,22 @@
+
+**Laravel-Authentication-with-OTP-Verification**
+This repository demonstrates a user authentication system in Laravel with OTP (One-Time Password) verification for added security. The AuthController handles user registration, login, OTP generation, email verification, and user dashboard access.
+
+**Instructions:**
+
+1. Clone the repository.
+2. Set up the database and run migrations (php artisan migrate).
+3. Register as a user to receive an OTP via email.
+4. Enter the OTP to verify the email and log in to access the dashboard.
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
