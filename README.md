@@ -3,9 +3,6 @@ This repository demonstrates a user authentication system in Laravel with OTP (O
 
 **Instructions:**
 1. Clone the repository.
-2. Install dependencies with composer install.
-3. Set up Google and Facebook OAuth credentials in the .env file as:
-GOOGLE_CLIENT_ID=your-google-client-id, GOOGLE_CLIENT_SECRET=your-google-client-secret, FACEBOOK_CLIENT_ID=your-facebook-client-id, FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
-   
-5. Run the migrations to set up the user table (php artisan migrate).
-6. Try logging in with your Google or Facebook account.
+2. Set up the database and run migrations (php artisan migrate).
+3. Register as a user to receive an OTP via email.
+4. Enter the OTP to verify the email and log in to access the dashboard.
