@@ -65,10 +65,6 @@ Manually implement routes, controllers, and Blade views for:
 
 ## 🔐 Important Middleware
 
-Apply these middlewares to routes:
-
-## 🔐 Important Middleware
-
 | Middleware  | Purpose                                                     |
 |-------------|-------------------------------------------------------------|
 | **auth**    | Restrict access to authenticated users only                 |
@@ -93,7 +89,7 @@ You can customize the email template in the resources/views/emails/otp.blade.php
 ## ⚠️ Important Considerations
 Avoid too many OTP requests: Consider adding a throttle function (e.g., limit OTP requests to 5 per minute).
 
-**📅 When to Use OTP Authentication with Email Verification?**
+## 📅 When to Use OTP Authentication with Email Verification?
 1. User Registration
 2. High-Security Applications
 3. Preventing Fake Sign-Ups
