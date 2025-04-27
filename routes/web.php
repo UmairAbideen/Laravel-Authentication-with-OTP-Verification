@@ -22,8 +22,9 @@ Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 // Handle login form submission
 Route::post('login', [AuthController::class, 'login']);
 
-// Route for resending OTP
-Route::post('resend-otp', [AuthController::class, 'resendOTP'])->name('resend.otp');
+Route::post('resend-otp', [AuthController::class, 'resendOTP'])
+    ->middleware('throttle:3,1') // 3 attempts per 1 minute
+    ->name('resend.otp');
 
 // Logout route
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
