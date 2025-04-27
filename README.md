@@ -1,66 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## 🔐 Laravel 10 OTP Authentication with Email Verification
+This project demonstrates how to build a simple authentication system in Laravel 10 with OTP (One-Time Password) verification sent via email. 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🧩 What This Project Contains
+- User registration with email
+- OTP (One-Time Password) verification for email validation
+- Middleware to restrict access to only verified users
+- Secure authentication and OTP verification routes
+- Blade templates styled with Bootstrap 5
 
-## About Laravel
+## ❓ Why Use OTP Authentication with Email Verification?
+🛡️ Increased Security
+✉️ Verifies User Authenticity
+📱 Easy User Verification
+💼 Use Case for Sensitive Applications
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**📅 When to Use OTP Authentication with Email Verification?**
+1. User Registration
+2. High-Security Applications
+3. Preventing Fake Sign-Ups
+4. Avoiding Password-Only Authentication
+5. When You Need Temporary Access
+6. Mobile or Multi-Device Authentication
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Tool         | Purpose                                                           |
+|--------------|-------------------------------------------------------------------|
+| Laravel 10   | PHP framework for building the application                        |
+| Blade        | View templating engine for rendering HTML views                   |
+| Eloquent ORM | Database interaction using Laravel's ORM for data manipulation    |
+| Bootstrap 5  | Frontend UI styling framework for responsive, mobile-first design |
+| Mail         | Email handling for OTP verification and notifications             |
 
-## Learning Laravel
+## 🚀 Setup Steps
+1️⃣ Install Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+``` bash
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+composer create-project laravel/laravel otp-auth
+2️⃣ Setup Authentication and OTP Verification
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Manually implement routes, controllers, and Blade views for:
 
-## Laravel Sponsors
+Registration
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+OTP Verification
 
-### Premium Partners
+Login
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Logout
 
-## Contributing
+Dashboard
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3️⃣ Enable Email Verification
 
-## Code of Conduct
+Implement MustVerifyEmail in the User model.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Use sendEmailVerificationNotification() after registration.
 
-## Security Vulnerabilities
+Add verification routes:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+/email/verify
 
-## License
+/email/verify/{id}/{hash}
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Protect routes like the dashboard with the verified middleware.
+
+4️⃣ Add OTP Functionality
+
+Generate a 6-digit OTP and send it to the user's email.
+
+Implement OTP verification route and validation.
+
+Handle OTP expiration (valid for 10 minutes).
+
+Add a resend OTP feature in case the user doesn't receive it.
+
+5️⃣ Add "Remember Me" Functionality
+
+Use Laravel's Auth::attempt() with the remember flag.
+
+Add a checkbox in the login form.
+
+6️⃣ Create Views
+
+Build Blade views using Bootstrap 5 for:
+
+Registration page
+
+OTP Verification page
+
+Login page
+
+Dashboard
+
+Flash messages for success/error notifications
+
+🔐 Important Middleware
+Apply these middlewares to routes:
+
+
+Middleware	Purpose
+auth	Restrict access to authenticated users only
+guest	Prevent authenticated users from accessing login/register pages
+verified	Restrict access to routes for verified email users only
+signed	Used for secure email verification links
+💡 Useful Artisan Commands
+bash
+Copy
+Edit
+php artisan migrate                    # Run migrations to set up the database
+php artisan serve                      # Start the local development server
+php artisan route:list                 # View all defined routes in the app
+📬 Notes on OTP Verification
+The OTP is 6 digits generated randomly using PHP’s rand() function.
+
+The OTP expires after 10 minutes.
+
+The OTP is stored in the User model along with its expiration time.
+
+The OTP is sent via email using Laravel's Mail system with a custom mailable OTPMail.
+
+You can customize the email template in the resources/views/emails/otp.blade.php.
+
+⚠️ Important Considerations
+Avoid too many OTP requests: Consider adding a throttle function (e.g., limit OTP requests to 5 per minute).
+
+Secure OTP storage: Ensure that OTP and its expiration date are securely handled and stored in the database.
+
+Remember Me: The "Remember Me" feature can be activated when logging in to allow persistent sessions for the user.
+
